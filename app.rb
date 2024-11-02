@@ -2,8 +2,54 @@ require "sinatra"
 require "sinatra/reloader"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  erb(:homepage)
+end
+
+get("/rock") do
+  @our_move = 'rock'
+  moves = ['rock', 'scissors', 'paper']
+  @comp_move = moves.sample
+  if @comp_move == 'rock'
+    @outcome = 'tied'
+  elsif @comp_move == 'scissors'
+    @outcome = 'won'
+  else
+    @outcome = 'lost'
+  end
+
+  erb(:zebra)
+end
+
+get("/scissors") do
+  @our_move = 'scissors'
+  moves = ['rock', 'scissors', 'paper']
+  @comp_move = moves.sample
+  if @comp_move == 'rock'
+    @outcome = 'lost'
+  elsif @comp_move == 'scissors'
+    @outcome = 'tied'
+  else
+    @outcome = 'won'
+  end
+
+  erb(:zebra)
+end
+
+get("/paper") do
+  @our_move = 'paper'
+  moves = ['rock', 'scissors', 'paper']
+  @comp_move = moves.sample
+  if @comp_move == 'rock'
+    @outcome = 'won'
+  elsif @comp_move == 'scissors'
+    @outcome = 'lost'
+  else
+    @outcome = 'tied'
+  end
+
+  erb(:zebra)
+end
+
+get("/rules") do
+  erb(:homepage)
 end
